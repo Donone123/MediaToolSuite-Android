@@ -27,9 +27,15 @@ jobs:
             autoconf libtool pkg-config \
             zlib1g-dev \
             libncurses5-dev \
-            cmake \
             libffi-dev \
             libssl-dev
+
+      - name: Install compatible CMake (avoid NDK 27 incompatibility)
+        run: |
+          # GitHub Actions runner has cmake 3.31 which is incompatible with NDK 27's flags.cmake
+          # Install cmake 3.22 from pip and put it first in PATH
+          pip install cmake==3.22.6
+          echo "$(python -c 'import sysconfig; print(sysconfig.get_path("scripts"))')" >> $GITHUB_PATH
 
       - name: Install Buildozer
         run: |
