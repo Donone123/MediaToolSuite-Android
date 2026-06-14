@@ -12,34 +12,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-
-      - name: Install system dependencies
+      - name: Build with Kivy Buildozer Docker
         run: |
-          sudo apt update -qq
-          sudo apt install -y -qq \
-            git zip unzip \
-            openjdk-17-jdk \
-            python3-pip \
-            autoconf libtool pkg-config \
-            zlib1g-dev \
-            libncurses5-dev \
-            cmake \
-            libffi-dev \
-            libssl-dev
-
-
-      - name: Install Buildozer
-        run: |
-          pip install --user buildozer
-          echo "$HOME/.local/bin" >> $GITHUB_PATH
-
-      - name: Build with Buildozer
-        run: |
-          buildozer android debug 2>&1
+          docker run --interactive --tty --rm \
+            --volume "$(pwd)":/home/user/hostcwd \
+            --volume ~/.buildozer-docker:/home/user/.buildozer \
+            --workdir /home/user/hostcwd \
+            kivy/buildozer:latest \
+            android debug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4

@@ -1,17 +1,17 @@
 """
 KivyMD recipe for python-for-android
-KivyMD is a pure Python package, no native compilation needed.
+Use PyPI URL instead of GitHub to avoid download issues
 """
 from pythonforandroid.recipe import PythonRecipe
 
 
 class KivyMDRecipe(PythonRecipe):
+    # Let pip handle the download via PythonRecipe's default behavior
     version = "2.0.1"
-    url = "https://github.com/kivymd/KivyMD/archive/{version}.tar.gz"
+    url = "https://files.pythonhosted.org/packages/source/k/kivymd/kivymd-{version}.tar.gz"
     depends = ["python3", "kivy", "setuptools"]
-    python_depends = []
+    python_depends = ["kivy"]
 
-    # Bypass auto-resolver — treat as pure Python
     call_hostpython_via_targetpython = False
     install_in_hostpython = False
 
