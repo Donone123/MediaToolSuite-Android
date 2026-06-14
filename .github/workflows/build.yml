@@ -14,7 +14,7 @@ jobs:
 
       - name: Build with Kivy Buildozer Docker
         run: |
-          docker run --interactive --tty --rm \
+          docker run --rm \
             --volume "$(pwd)":/home/user/hostcwd \
             --volume ~/.buildozer-docker:/home/user/.buildozer \
             --workdir /home/user/hostcwd \
