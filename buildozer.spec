@@ -5,7 +5,7 @@ package.domain = org.mediatoolsuite
 source.dir = .
 source.include_exts = py,png,jpg,jpeg,gif,ttf,kv
 version = 1.0.0
-requirements = python3,kivy==2.3.1,kivymd==2.0.1,Pillow==10.3.0,android
+requirements = python3,kivy==2.3.1,kivymd==2.0.1,Pillow==9.5.0,android
 orientation = portrait
 osx.python_version = 3.11
 osx.kivy_version = 2.3.1
