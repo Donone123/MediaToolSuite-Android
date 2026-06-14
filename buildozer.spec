@@ -5,7 +5,7 @@ package.domain = org.mediatoolsuite
 source.dir = .
 source.include_exts = py,png,jpg,jpeg,gif,ttf,kv
 version = 1.0.0
-requirements = python3,kivy==2.3.1,kivymd==2.0.1,Pillow==9.5.0,android
+requirements = python3,kivy==2.3.1,kivymd==2.0.1,Pillow,android
 orientation = portrait
 osx.python_version = 3.11
 osx.kivy_version = 2.3.1
@@ -61,7 +61,7 @@ android.add_product_flavors =
 android.add_build_tools =
 p4a.local_recipes =
 p4a.hook =
-p4a.branch = develop
+p4a.branch = master
 p4a.skip_local_build = False
 p4a.command_line_flags =
 p4a.extra_env_vars =
